@@ -10,6 +10,8 @@ const cors=require("cors");
 
 const ProductRoute=require("./routes/product.route");
 
+const CheckoutRoute=require("./routes/checkout.route")
+
 const app=express();
 
 app.use(express.json());
@@ -28,6 +30,8 @@ app.use(
 // products route
 
 app.use("/products",ProductRoute);
+app.use("/cart",ProductRoute);
+app.use("/checkout",CheckoutRoute);
 
 
 app.get("/",(req,res)=>{
