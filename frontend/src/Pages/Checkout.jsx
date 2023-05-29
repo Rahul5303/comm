@@ -1,11 +1,21 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCheckout } from '../Redux/CheckoutReducer/actionCreator';
-import { Box, Button, Divider, FormLabel, Heading, Input, Stack, useToast } from '@chakra-ui/react';
+import { Box, Button, Divider, FormLabel, Heading, Input, Stack, Text, useToast } from '@chakra-ui/react';
 import Navbar from '../Component/Navbar';
 import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
+  const cart = useSelector((store) => store.CartReducer.cart);
+  console.log(cart);
+
+  let total = 0;
+  cart.forEach((el) => {
+    total = total + el.count * el.price;
+  });
+
+
+ 
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,7 +57,12 @@ const Checkout = () => {
       <Navbar />
       <Heading fontFamily="Arial" marginTop="20px">Checkout Page</Heading>
       <Divider size="sm" color="black"/>
-      <Box w="35%" m="auto">
+      <Box p="4" rounded="md" w="88%" m="auto" mt="4" bg="gray.300" >
+        <Text fontSize="2xl" fontWeight="bold" textAlign="right" color="black">
+          Total Amount to Pay: ₹{total}
+        </Text>
+      </Box>
+      <Box w="35%" m="auto" mt="30px">
        <form onSubmit={handleSubmit}>
        <Stack spacing='24px'>
       <FormLabel>
@@ -70,7 +85,7 @@ const Checkout = () => {
         Phone:
         <Input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)}  required/>
       </FormLabel>
-      <Button onClick={Order} type="submit" colorScheme='blue'>Checkout</Button>
+      <Button onClick={Order} type="submit" colorScheme='blue'>Order</Button>
       </Stack>
     </form>
     </Box>

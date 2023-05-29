@@ -1,11 +1,11 @@
 
 
 import { Box, Button, Divider, Heading, Image, Text, useToast } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../Component/Navbar';
-import { Decreament, Increament } from '../Redux/CartReducer/actionCreator';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Decreament, Increament, removeFromCart} from '../Redux/CartReducer/actionCreator';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const cart = useSelector((store) => store.CartReducer.cart);
@@ -15,6 +15,10 @@ const Cart = () => {
   const toast = useToast();
 
   const navigate = useNavigate();
+
+  
+
+ 
 
   const adIncrement = (productId) => {
     dispatch(Increament(productId));
@@ -40,15 +44,24 @@ const Cart = () => {
     adDecrement(productId);
   };
 
-  let total = 0;
-  cart.forEach((el) => {
-    total = total + el.count * el.price;
-  });
+  const handleRemoveFromCart = (productId) => {
+    dispatch(removeFromCart(productId));
+  };
+
+  // let total = 0;
+  // cart.forEach((el) => {
+  //   total = total + el.count * el.price;
+  // });
+
+  const calculateTotal = () => {
+    return cart.reduce((total, el) => total + el.price, 0);
+  };
 
   //   order
-  const Order = () => {
+  
+  const handleCheckout = () => {
     toast({
-      title: 'Checkout Page.',
+      title: 'Checkout Page',
       description: 'Fill in the details to proceed with the purchase',
       status: 'success',
       duration: 2000,
@@ -91,18 +104,24 @@ const Cart = () => {
                     +
                   </Button>
                 </Box>
-                <Button onClick={Order} colorScheme="blue" size="md">
-                  Buy Now
+                <Button onClick={() => handleRemoveFromCart(el.id)} colorScheme="blue" size="md">
+                 Remove
                 </Button>
+                {/* <Button onClick={Order} colorScheme="blue" size="md">
+                  Buy Now
+                </Button> */}
               </Box>
             </Box>
           </Box>
         ))}
       </Box>
-      <Box p="6" rounded="md" w="88%" m="auto" mt="4" bg="gray.300" >
+      <Box p="6" rounded="md" w="88%" m="auto" mt="4" bg="gray.300" height={"120px"} >
         <Text fontSize="2xl" fontWeight="bold" textAlign="right" color="black">
-          Total: ₹{total}
+        Total: ₹{calculateTotal()}
         </Text>
+        <Button onClick={handleCheckout} colorScheme="blue" size="md" mt="2">
+          Proceed to Checkout
+        </Button>
       </Box>
     </Box>
   );

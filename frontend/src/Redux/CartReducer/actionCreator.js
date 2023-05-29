@@ -1,10 +1,11 @@
-import { CART_REQUEST, DECREMENT, INCREMENT } from "./actionTypes";
+import { CART_REQUEST, DECREMENT, INCREMENT, REMOVE_FROM_CART } from "./actionTypes";
 
 
 
 
 
 
-export const AddCart = (data) => ({ type: CART_REQUEST, payload: data });
-export const Increament = (data) => ({ type: INCREMENT, payload: data });
-export const Decreament = (data) => ({ type: DECREMENT, payload: data });
+export const AddCart = (productId) => ({ type: CART_REQUEST, payload: productId });
+export const Increament = (productId) => ({ type: INCREMENT, payload: productId});
+export const Decreament = (productId) => ({ type: DECREMENT, payload: productId});
+export const removeFromCart = (productId) => ({ type: REMOVE_FROM_CART, payload: productId});

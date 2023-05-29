@@ -76,7 +76,7 @@ export const addToCart = (product) => {
   export const removeFromCart = (product) => {
     return async (dispatch) => {
       try {
-        const response = await axios.put(`/products/${product._id}/remove-from-cart`);
+        const response = await axios.delete(`/products/${product._id}/remove-from-cart`);
         const updatedProduct = response.data;
         dispatch({ type:types.REMOVE_TO_CART_REQUEST, payload: updatedProduct });
       } catch (error) {
