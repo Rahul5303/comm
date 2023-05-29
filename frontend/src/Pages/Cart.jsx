@@ -104,7 +104,7 @@ const Cart = () => {
                     +
                   </Button>
                 </Box>
-                <Button onClick={() => handleRemoveFromCart(el.id)} colorScheme="blue" size="md">
+                <Button onClick={() => handleRemoveFromCart(el.id) } colorScheme="blue" size="md">
                  Remove
                 </Button>
                 {/* <Button onClick={Order} colorScheme="blue" size="md">
