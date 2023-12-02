@@ -50,51 +50,12 @@ const SingleProduct = () => {
     });
     navigate("/cart");
   };
-  // const handleAddToCart = (product) => {
-  //   dispatch(addToCart(product));
-  // };
-
-  // // qunatity decrese and increse value
-
-  // const handleIncreaseQuantity = (product) => {
-  //   const updatedProduct = { ...product, quantity: product.quantity + 1 };
-  //   dispatch(addToCart(updatedProduct));
-  // };
-
-  // const handleDecreaseQuantity = (product) => {
-  //   if (product.quantity > 1) {
-  //     const updatedProduct = { ...product, quantity: product.quantity - 1 };
-  //     dispatch(addToCart(updatedProduct));
-  //   }
-  // };
-
-  //   useEffect(() => {
-  //     if (id) {
-  //       const currentproducts = products.find((shoe) => shoe.id === Number(id));
-  //       currentproducts && setCurrentProducts(currentproducts);
-  //     }
-  //   }, [id]);
-
-  // const AddhandleCart=()=>{
-  //   dispatch(AddCart({...product,count:1}));
-  //   toast({
-  //       title: 'Data Added To Cart.',
-  //       description: "Successfully Added to Cart.",
-  //       status: 'success',
-  //       duration: 2000,
-  //       isClosable: true,
-  //     })
-  //     navigate("/cart");
-
-  // }
 
   return (
     <Box>
       <Navbar />
       <Heading fontFamily="Arial" marginTop="20px">ProductDetails Page</Heading>
       <Divider size="sm" color="black"/>
-      
-      {/* <Box boxShadow='lg' p='20' m='auto' rounded='md' w="70%"> */}
       <Card direction={{ base: 'column', sm: 'row' }}
       marginTop="20px"
   overflow='hidden'
@@ -117,14 +78,6 @@ const SingleProduct = () => {
             </CardBody>
        
        
-
-        {/* <Container>
-      <Text fontSize="2xl">Description:Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-      </Text>
-      </Container> */}
-        {/* <Button onClick={AddhandleCart} colorScheme="blue" style={{width:"20%",margin:"auto",marginTop:"20px"}}>Add to Cart</Button> */}
-        {/* <Button onClick={() => handleIncreaseQuantity(product)}>+</Button>
-          <Button onClick={() => handleDecreaseQuantity(product)}>-</Button> */}
  <CardFooter>
     
         <Button

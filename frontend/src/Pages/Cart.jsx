@@ -61,7 +61,7 @@ const Cart = () => {
   
   const handleCheckout = () => {
     toast({
-      title: 'Checkout Page',
+      title: 'Checkout Pages if Possible',
       description: 'Fill in the details to proceed with the purchase',
       status: 'success',
       duration: 2000,
